@@ -1,5 +1,44 @@
 package esercizio1;
 
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Entity
+@Table(name = "gestioneventi")
+@Getter
+@Setter
+@ToString
+
 public class Location {
 
+	@Id
+	@GeneratedValue // Obbligatorio usarlo se si vuol fare gestire gli id al db
+	// private UUID id;
+	private long id;
+	private String titolo;
+	private LocalDate dataEvento;
+	private String descrizione;
+	private String tipoEvento; // [pubblico, privato]
+	private int numeroMassimoPartecipanti;
+
+	public Location() {
+	}
+
+	public Location(String titolo, LocalDate dataEvento, String descrizione, String tipoEvento,
+			int numeroMassimoPartecipanti) {
+		super();
+		this.titolo = titolo;
+		this.dataEvento = dataEvento;
+		this.descrizione = descrizione;
+		this.tipoEvento = tipoEvento;
+		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+	}
 }
