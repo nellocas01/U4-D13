@@ -1,7 +1,5 @@
 package esercizio1;
 
-import java.time.LocalDate;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,13 +7,11 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Table(name = "gestioneventi")
+@Table(name = "location")
 @Getter
 @Setter
-@ToString
 
 public class Location {
 
@@ -23,22 +19,21 @@ public class Location {
 	@GeneratedValue // Obbligatorio usarlo se si vuol fare gestire gli id al db
 	// private UUID id;
 	private long id;
-	private String titolo;
-	private LocalDate dataEvento;
-	private String descrizione;
-	private String tipoEvento; // [pubblico, privato]
-	private int numeroMassimoPartecipanti;
+	private String nome;
+	private String città;
 
 	public Location() {
 	}
 
-	public Location(String titolo, LocalDate dataEvento, String descrizione, String tipoEvento,
-			int numeroMassimoPartecipanti) {
+	public Location(String nome, String città) {
 		super();
-		this.titolo = titolo;
-		this.dataEvento = dataEvento;
-		this.descrizione = descrizione;
-		this.tipoEvento = tipoEvento;
-		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+		this.nome = nome;
+		this.città = città;
 	}
+
+	@Override
+	public String toString() {
+		return "Location [id=" + id + ", nome=" + nome + ", città=" + città + "]";
+	}
+
 }

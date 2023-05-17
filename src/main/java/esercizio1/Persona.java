@@ -9,13 +9,11 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Table(name = "gestioneventi")
+@Table(name = "persona")
 @Getter
 @Setter
-@ToString
 
 public class Persona {
 
@@ -23,23 +21,31 @@ public class Persona {
 	@GeneratedValue // Obbligatorio usarlo se si vuol fare gestire gli id al db
 	// private UUID id;
 	private long id;
-	private String titolo;
-	private LocalDate dataEvento;
-	private String descrizione;
-	private String tipoEvento; // [pubblico, privato]
-	private int numeroMassimoPartecipanti;
+	private String nome;
+	private String cognome;
+	private String email; // [pubblico, privato]
+	private LocalDate dataNascita;
+	private String sesso;
+	private String listaPartecipanti;
 
 	public Persona() {
 	}
 
-	public Persona(String titolo, LocalDate dataEvento, String descrizione, String tipoEvento,
-			int numeroMassimoPartecipanti) {
+	public Persona(String nome, String cognome, String email, LocalDate dataNascita, String sesso,
+			String listaPartecipanti) {
 		super();
-		this.titolo = titolo;
-		this.dataEvento = dataEvento;
-		this.descrizione = descrizione;
-		this.tipoEvento = tipoEvento;
-		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.dataNascita = dataNascita;
+		this.sesso = sesso;
+		this.listaPartecipanti = listaPartecipanti;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", dataNascita="
+				+ dataNascita + ", sesso=" + sesso + ", listaPartecipanti=" + listaPartecipanti + "]";
 	}
 
 }

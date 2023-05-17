@@ -1,6 +1,7 @@
 package esercizio1;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,13 +10,11 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "gestioneventi")
 @Getter
 @Setter
-@ToString
 
 public class Evento {
 
@@ -29,6 +28,9 @@ public class Evento {
 	private String tipoEvento; // [pubblico, privato]
 	private int numeroMassimoPartecipanti;
 
+	private Set<Partecipazione> partecipazione;
+	private Set<Location> location;
+
 	public Evento() {
 	}
 
@@ -41,4 +43,11 @@ public class Evento {
 		this.tipoEvento = tipoEvento;
 		this.numeroMassimoPartecipanti = numeroMassimoPartecipanti;
 	}
+
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", titolo=" + titolo + ", dataEvento=" + dataEvento + ", descrizione=" + descrizione
+				+ ", tipoEvento=" + tipoEvento + ", numeroMassimoPartecipanti=" + numeroMassimoPartecipanti + "]";
+	}
+
 }

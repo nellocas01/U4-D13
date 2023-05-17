@@ -15,10 +15,10 @@ public class EventoDAO {
 		this.em = em;
 	}
 
-	public void save(Evento one) {
+	public void save(Evento ed) {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
-		em.persist(one);
+		em.persist(ed);
 		transaction.commit();
 		System.out.println("evento salvato");
 	}
